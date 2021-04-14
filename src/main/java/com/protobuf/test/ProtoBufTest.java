@@ -7,7 +7,6 @@ public class ProtoBufTest {
 
 	public static void generateTestProto(int total) {
 		AddressBook.Builder book = AddressBook.newBuilder();
-		//List<Person.Builder> peopleList =  book.add
 		for(int i = 0 ; i < total ; ++i) {
 			Person.Builder person = Person.newBuilder();
 			Random rand = new Random(i);
@@ -28,9 +27,7 @@ public class ProtoBufTest {
 				phoneNumber.setType(Person.PhoneType.WORK);
 			}
 			person.addPhones(phoneNumber);
-			person.setCountry("Unites States");
-	
-			//System.out.println("Size " +person.build().toByteArray().length);
+			person.setCountry("United States");
 			book.addPeople(person); 
 		}
 		System.out.println("Final Size " +book.build().toByteArray().length);
@@ -39,7 +36,7 @@ public class ProtoBufTest {
 		AddressBook.Builder book = AddressBook.newBuilder();
 		CountryMapping.Builder cBuilder = CountryMapping.newBuilder();
 		cBuilder.setKey(1);
-		cBuilder.setValue("Unites States");
+		cBuilder.setValue("United States");
 		book.addCmap(cBuilder);
 		for(int i = 0 ; i < total ; ++i) {
 			Person.Builder person = Person.newBuilder();
@@ -62,8 +59,6 @@ public class ProtoBufTest {
 			}
 			person.addPhones(phoneNumber);
 			person.setCountry("1");
-	
-			//System.out.println("Size " +person.build().toByteArray().length);
 			book.addPeople(person); 
 		}
 		System.out.println("Final Size with Map " +book.build().toByteArray().length);
